@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTour Brasil</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <h1>EcoTour Brasil</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Pacotes Turísticos</h2>
+      <div class="tabela-container">
+        <table class="pacotes">
+          <thead>
+            <tr>
+              <th>Destino</th>
+              <th>Duração</th>
+              <th>Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chapada dos Veadeiros</td>
+              <td>6 dias</td>
+              <td>R$ 2.200</td>
+            </tr>
+            <tr>
+              <td>Pantanal</td>
+              <td>4 dias</td>
+              <td>R$ 1.600</td>
+            </tr>
+            <tr>
+              <td>Ilha Grande</td>
+              <td>5 dias</td>
+              <td>R$ 1.950</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Formulário de Reserva</h2>
+      <form>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" pattern="\(\d{2}\)\s\d{4,5}-\d{4}" required>
+
+        <label for="destino">Destino:</label>
+        <select id="destino" name="destino" required>
+          <option value="">Selecione</option>
+          <option value="veadeiros">Chapada dos Veadeiros</option>
+          <option value="pantanal">Pantanal</option>
+          <option value="ilhagrande">Ilha Grande</option>
+        </select>
+
+        <label for="data">Data da Viagem:</label>
+        <input type="date" id="data" name="data" required>
+
+        <button type="submit">Reservar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 EcoTour Brasil</p>
+  </footer>
+</body>
+</html>
