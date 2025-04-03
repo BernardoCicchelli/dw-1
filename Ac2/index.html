@@ -1,11 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commiting folder</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback para a página de perfil de Bernardo Cicchelli</title>
 </head>
 <body>
+  <h1>Feedback para a página de perfil de Bernardo Cicchelli</h1>
+
+  <form>
+    <!-- Dados pessoais -->
+    <fieldset>
+      <legend>Dados Pessoais</legend>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="Email"><br><br>
+
+      <label for="origem">Como você encontrou meu perfil?</label><br>
+      <select id="origem" name="origem">
+        <option value="google">Google</option>
+        <option value="midia">Mídia Social</option>
+        <option value="amigo">Amigo</option>
+        <option value="outro">Outro</option>
+      </select>
+    </fieldset><br>
+
+    <!-- Feedback -->
+    <fieldset>
+      <legend>Seu feedback</legend>
+
+      <label for="comentario">Deixe seu comentário:</label><br>
+      <textarea id="comentario" name="comentario" rows="4" cols="50"></textarea><br><br>
+
+      <p>Você gostou do meu perfil?</p>
+      <input type="radio" id="sim" name="gostou" value="sim">
+      <label for="sim">Sim</label><br>
+      <input type="radio" id="nao" name="gostou" value="nao">
+      <label for="nao">Não</label><br>
+      <input type="radio" id="talvez" name="gostou" value="talvez">
+      <label for="talvez">Talvez</label><br><br>
+
+      <p>O que você mais gostou no perfil?</p>
+      <input type="checkbox" id="design" name="gostou_mais" value="design">
+      <label for="design">Design</label><br>
+      <input type="checkbox" id="conteudo" name="gostou_mais" value="conteudo">
+      <label for="conteudo">Conteúdo</label><br>
+      <input type="checkbox" id="facilidade" name="gostou_mais" value="facilidade">
+      <label for="facilidade">Facilidade de uso</label><br>
+      <input type="checkbox" id="outros" name="gostou_mais" value="outros">
+      <label for="outros">Outros</label>
+    </fieldset><br>
+
+    <!-- Submissão -->
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Redefinir">
+  </form><br>
+
+  <!-- Multimídia -->
+  <section>
+    <h2>Vídeo de introdução</h2>
+    <iframe width="1047" height="589" src="https://www.youtube.com/embed/K4xaF9EPne4" title="Mica Galvao v Matheus Gabriel / World Championship 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  <section>
+    <h2>Música favorita</h2>
+    <audio controls>
+      <source src="/foi-quando-gyro-finalmente-entendeu.mp3">
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+  </section><br>
+
+  <!-- Rodapé -->
+  <footer>
     
+  </footer>
 </body>
 </html>
