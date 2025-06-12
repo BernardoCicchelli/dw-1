@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Investimentos | Simulador Cicchelli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span class="logo-icon-placeholder"></span>
+                <span>Simulador Cicchelli</span>
+            </a>
+            <ul>
+                <li><a href="index.html">Simulador</a></li>
+                <li><a href="dados-economicos.html">Dados Econômicos</a></li>
+                <li><a href="investimentos.html" class="nav-active">Investimentos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-container">
+            <h1>Vitrine de Investimentos</h1>
+            <p>Conheça os principais tipos de investimentos e acompanhe seus indicadores.</p>
+
+            <section class="investment-section">
+                <h2><i class="fas fa-shield-alt"></i> Renda Fixa: Os Indicadores Chave</h2>
+                <div class="cards-container">
+                    <div class="info-card">
+                        <h3>Taxa Selic</h3>
+                        <p class="card-value"><span id="selic-rate">--</span>% a.a.</p>
+                        <small>A taxa básica de juros da economia.</small>
+                    </div>
+                    <div class="info-card">
+                        <h3>CDI</h3>
+                        <p class="card-value"><span id="cdi-rate">--</span>% a.a.</p>
+                        <small>Referência para investimentos de renda fixa.</small>
+                    </div>
+                    <div class="info-card">
+                        <h3>Inflação (IPCA)</h3>
+                        <p class="card-value"><span id="ipca-rate">--</span>%</p>
+                        <small>Acumulado dos últimos 12 meses.</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="investment-section">
+                <h2><i class="fas fa-chart-line"></i> Renda Variável: Ações (B3)</h2>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Ativo</th>
+                            <th>Preço (R$)</th>
+                            <th>Variação (Dia)</th>
+                            <th>P/L</th>
+                            <th>Div. Yield %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="acoes-table-body">
+                        <tr><td colspan="5">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="investment-section">
+                <h2><i class="fas fa-building"></i> Fundos Imobiliários (FIIs)</h2>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Fundo</th>
+                            <th>Cota (R$)</th>
+                            <th>Variação (Dia)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fiis-table-body">
+                        <tr><td colspan="3">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/investimentos.js"></script>
+</body>
+</html>

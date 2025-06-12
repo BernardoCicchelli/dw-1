@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Investimentos Cicchelli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Simulador Cicchelli</a>
+            <ul>
+                <li><a href="index.html" class="nav-active">Simulador</a></li>
+                <li><a href="dados-economicos.html">Dados Econômicos</a></li>
+                <li><a href="investimentos.html">Investimentos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <section class="slides-container">
+            <article class="slide active">
+                <h2>Bem-vindo ao Simulador!</h2>
+                <p>Vamos encontrar a carteira de investimentos ideal para você. Responda 7 perguntas rápidas para começar.</p>
+                <button onclick="startQuiz()">Começar <i class="fa-solid fa-arrow-right"></i></button>
+            </article>
+
+            <article class="slide">
+                <h2>1/7: Qual o valor do seu investimento inicial?</h2>
+                <div class="radio-group">
+                    <label><input type="radio" name="valor_inicial" value="ate_1k"> Até R$ 1.000</label>
+                    <label><input type="radio" name="valor_inicial" value="1k_5k"> Entre R$ 1.001 e R$ 5.000</label>
+                    <label><input type="radio" name="valor_inicial" value="5k_20k"> Entre R$ 5.001 e R$ 20.000</label>
+                    <label><input type="radio" name="valor_inicial" value="acima_20k"> Acima de R$ 20.000</label>
+                </div>
+                <div class="nav-buttons">
+                    <button onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Anterior</button>
+                    <button onclick="nextSlide()"><i class="fa-solid fa-arrow-right"></i> Próximo</button>
+                </div>
+            </article>
+
+            <article class="slide">
+                <h2>2/7: Você pretende investir mensalmente?</h2>
+                <div class="radio-group">
+                    <label><input type="radio" name="aporte_mensal" value="nao"> Não, será um aporte único.</label>
+                    <label><input type="radio" name="aporte_mensal" value="ate_300"> Sim, até R$ 300 por mês.</label>
+                    <label><input type="radio" name="aporte_mensal" value="301_1k"> Sim, entre R$ 301 e R$ 1.000 por mês.</label>
+                    <label><input type="radio" name="aporte_mensal" value="acima_1k"> Sim, mais de R$ 1.000 por mês.</label>
+                </div>
+                <div class="nav-buttons">
+                    <button onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Anterior</button>
+                    <button onclick="nextSlide()"><i class="fa-solid fa-arrow-right"></i> Próximo</button>
+                </div>
+            </article>
+
+            <article class="slide">
+                <h2>3/7: Por quanto tempo seu dinheiro pode ficar investido?</h2>
+                <div class="radio-group">
+                    <label><input type="radio" name="horizonte" value="curto"> Curto Prazo (Até 2 anos)</label>
+                    <label><input type="radio" name="horizonte" value="medio"> Médio Prazo (De 2 a 5 anos)</label>
+                    <label><input type="radio" name="horizonte" value="longo"> Longo Prazo (Mais de 5 anos)</label>
+                </div>
+                <div class="nav-buttons">
+                    <button onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Anterior</button>
+                    <button onclick="nextSlide()"><i class="fa-solid fa-arrow-right"></i> Próximo</button>
+                </div>
+            </article>
+
+            <article class="slide">
+                <h2>4/7: Qual seu nível de conhecimento sobre investimentos?</h2>
+                <div class="radio-group">
+                    <label><input type="radio" name="conhecimento" value="iniciante"> Iniciante: Estou começando agora.</label>
+                    <label><input type="radio" name="conhecimento" value="intermediario"> Intermediário: Já conheço o básico.</label>
+                    <label><input type="radio" name="conhecimento" value="avancado"> Avançado: Acompanho o mercado de perto.</label>
+                </div>
+                <div class="nav-buttons">
+                    <button onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Anterior</button>
+                    <button onclick="nextSlide()"><i class="fa-solid fa-arrow-right"></i> Próximo</button>
+                </div>
+            </article>
+            
+            <article class="slide">
+                <h2>5/7: O que você mais valoriza em um investimento?</h2>
+                <div class="radio-group">
+                    <label><input type="radio" name="tolerancia" value="baixa"> Segurança máxima, mesmo com menor retorno.</label>
+                    <label><input type="radio" name="tolerancia" value="media"> Um bom equilíbrio entre segurança e retorno.</label>
+                    <label><input type="radio" name="tolerancia" value="alta"> O maior potencial de retorno, mesmo com mais risco.</label>
+                </div>
+                <div class="nav-buttons">
+                    <button onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Anterior</button>
+                    <button onclick="nextSlide()"><i class="fa-solid fa-arrow-right"></i> Próximo</button>
+                </div>
+            </article>
+
+            <article class="slide">
+                <h2>6/7: Qual é o seu principal objetivo com este dinheiro?</h2>
+                <div class="radio-group">
+                    <label><input type="radio" name="objetivo" value="reserva"> Criar uma Reserva de Emergência.</label>
+                    <label><input type="radio" name="objetivo" value="bem"> Comprar um bem (carro, casa, viagem).</label>
+                    <label><input type="radio" name="objetivo" value="aposentadoria"> Aposentadoria / Independência Financeira.</label>
+                    <label><input type="radio" name="objetivo" value="patrimonio"> Apenas aumentar meu patrimônio.</label>
+                </div>
+                <div class="nav-buttons">
+                    <button onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Anterior</button>
+                    <button onclick="showResults()">Ver meu resultado!</button>
+                </div>
+            </article>
+            
+            <article class="slide" id="resultado-slide">
+                <h2>Sua Carteira de Investimentos Sugerida</h2>
+                
+                <div class="resultado-wrapper">
+                    <div id="relatorio-texto"></div>
+                    <div class="chart-container">
+                        <canvas id="investmentChart"></canvas>
+                    </div>
+                </div>
+
+                 <button onclick="restartQuiz()"><i class="fas fa-redo"></i> Refazer Simulação</button>
+            </article>
+            
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

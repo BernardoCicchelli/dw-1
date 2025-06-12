@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Econômicos | Simulador Cicchelli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Simulador Cicchelli</a>
+            <ul>
+                <li><a href="index.html">Simulador</a></li>
+                <li><a href="dados-economicos.html" class="nav-active">Dados Econômicos</a></li>
+                <li><a href="investimentos.html">Investimentos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-container">
+            <h1>Cotações de Moedas</h1>
+            <p>Valores atualizados em tempo real. As cotações são baseadas em relação ao Real (BRL).</p>
+            <button id="refresh-button"><i class="fas fa-sync-alt"></i> Atualizar Tabela</button>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Moeda</th>
+                        <th>Nome</th>
+                        <th>Valor (R$)</th>
+                        <th>Variação</th>
+                        <th>Última Atualização</th>
+                    </tr>
+                </thead>
+                <tbody id="cotacoes-tabela">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="js/dados-economicos.js"></script>
+</body>
+</html>
