@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // SEÇÃO DE RENDA FIXA (continua buscando da API real)
     const fetchTaxasRendaFixa = async () => {
         try {
             const response = await fetch('https://brasilapi.com.br/api/taxas/v1');
@@ -20,34 +21,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const fetchRendaVariavel = async () => {
+    // SEÇÃO DE RENDA VARIÁVEL (agora com dados de simulação)
+
+    // Função que preenche as tabelas de Ações e FIIs com dados fixos.
+    const populateRendaVariavelComMockData = () => {
         const acoesTableBody = document.getElementById('acoes-table-body');
         const fiisTableBody = document.getElementById('fiis-table-body');
         
-        const seuTokenDaBrapi = 'mB5RM3jVcghFsNGwiVH8dT'; 
+        // DADOS DE SIMULAÇÃO (MOCK DATA)
+        // Como a API da Brapi agora exige chave, usaremos estes dados fixos como exemplo.
+        // Você pode alterar os valores aqui para testar.
+        const mockData = {
+            results: [
+                { symbol: 'IBOV', regularMarketPrice: 121570.00, regularMarketChangePercent: 0.80, priceEarnings: null, dividendYield: null },
+                { symbol: 'PETR4', regularMarketPrice: 37.50, regularMarketChangePercent: -1.25, priceEarnings: 4.5, dividendYield: 15.2 },
+                { symbol: 'VALE3', regularMarketPrice: 61.30, regularMarketChangePercent: 2.10, priceEarnings: 6.1, dividendYield: 8.5 },
+                { symbol: 'ITUB4', regularMarketPrice: 32.15, regularMarketChangePercent: 0.55, priceEarnings: 8.9, dividendYield: 5.8 },
+                { symbol: 'IFIX', regularMarketPrice: 3360.50, regularMarketChangePercent: -0.15 },
+                { symbol: 'MXRF11', regularMarketPrice: 10.25, regularMarketChangePercent: 0.49 },
+                { symbol: 'HGLG11', regularMarketPrice: 162.80, regularMarketChangePercent: -0.60 }
+            ]
+        };
         
-        // Separamos os tickers para buscar os dados fundamentalistas apenas das ações
-        const tickersAcoes = 'IBOV,PETR4,VALE3,ITUB4';
-        const tickersFiis = 'IFIX,MXRF11,HGLG11';
-        
-        // URL para Ações com dados fundamentalistas
-        const urlAcoes = `https://brapi.dev/api/quote/${tickersAcoes}?fundamental=true`;
-        // URL para FIIs (chamada simples, sem 'fundamental')
-        const urlFiis = `https://brapi.dev/api/quote/${tickersFiis}`;
+        // Limpa as tabelas
+        acoesTableBody.innerHTML = '';
+        fiisTableBody.innerHTML = '';
 
-        try {
-            // --- BUSCA DADOS DAS AÇÕES ---
-            const responseAcoes = await fetch(urlAcoes, {
-                method: 'GET',
-                headers: { 'Authorization': `Bearer ${seuTokenDaBrapi}` }
-            });
-            if (!responseAcoes.ok) throw new Error('Falha ao buscar dados de ações.');
-            const dataAcoes = await responseAcoes.json();
-            
-            acoesTableBody.innerHTML = ''; // Limpa a tabela de ações
-            dataAcoes.results.forEach(quote => {
-                const variacaoHTML = getVariacaoHTML(quote.regularMarketChangePercent);
-                const row = `
+        // Itera sobre os dados de simulação para preencher as tabelas.
+        mockData.results.forEach(quote => {
+            const variacaoHTML = getVariacaoHTML(quote.regularMarketChangePercent);
+
+            // Se for Ação, preenche a tabela de ações com as colunas extras.
+            if (quote.priceEarnings !== undefined) {
+                 const row = `
                     <tr>
                         <td>${quote.symbol}</td>
                         <td>R$ ${quote.regularMarketPrice.toFixed(2)}</td>
@@ -57,20 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </tr>
                 `;
                 acoesTableBody.innerHTML += row;
-            });
-
-            // BUSCA DADOS DOS FIIs
-            const responseFiis = await fetch(urlFiis, {
-                method: 'GET',
-                headers: { 'Authorization': `Bearer ${seuTokenDaBrapi}` }
-            });
-            if (!responseFiis.ok) throw new Error('Falha ao buscar dados de FIIs.');
-            const dataFiis = await responseFiis.json();
-
-            fiisTableBody.innerHTML = ''; // Limpa a tabela de FIIs
-            dataFiis.results.forEach(quote => {
-                 const variacaoHTML = getVariacaoHTML(quote.regularMarketChangePercent);
-                 const row = `
+            } 
+            // Se for FII, preenche a tabela de FIIs.
+            else {
+                const row = `
                     <tr>
                         <td>${quote.symbol}</td>
                         <td>R$ ${quote.regularMarketPrice.toFixed(2)}</td>
@@ -78,17 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     </tr>
                 `;
                 fiisTableBody.innerHTML += row;
-            });
-
-        } catch(error) {
-            console.error("Erro na Renda Variável:", error);
-            const errorMessage = `Erro: ${error.message}.`;
-            acoesTableBody.innerHTML = `<tr><td colspan="5">${errorMessage}</td></tr>`;
-            fiisTableBody.innerHTML = `<tr><td colspan="3">${errorMessage}</td></tr>`;
-        }
+            }
+        });
     };
     
-    // Função auxiliar para criar o HTML da variação
+    // Função auxiliar para criar o HTML da variação (reutilizada).
     function getVariacaoHTML(variacao) {
         const variacaoNum = parseFloat(variacao) || 0;
         if (variacaoNum > 0) {
@@ -100,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Chama as funções para carregar a página
     fetchTaxasRendaFixa();
-    fetchRendaVariavel();
+    populateRendaVariavelComMockData(); // Chamamos a nossa nova função com dados fixos
 });
